@@ -35,6 +35,7 @@
     <AssemblyMetadata Include="ModManager.Category" Value="QualityOfLife" />
     <AssemblyMetadata Include="ModManager.GameVersion" Value="1.1.19611" />
     <AssemblyMetadata Include="ModManager.Settings" Value="Restart" />
+    <AssemblyMetadata Include="ModManager.NexusId" Value="91" />
     <AssemblyMetadata Include="ModManager.GitHub" Value="AnExiledDev/SurvivalLog-ScrapPickup" />
     <AssemblyMetadata Include="ModManager.Changelog" Value="https://github.com/AnExiledDev/SurvivalLog-ScrapPickup/blob/main/CHANGELOG.md" />
   </ItemGroup>
