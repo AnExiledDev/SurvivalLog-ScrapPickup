@@ -53,6 +53,8 @@ Found a bug, have an idea, or something feels off? Come say so on the Core Direc
 
 To reach me directly, message `exiled.dev` on Discord; you can find me in the [official Survival Log Discord](https://discord.gg/MZGg4gQAUe). I'm also on X as [@AnExiledDev](https://x.com/AnExiledDev).
 
+A Survival Log wiki with detailed documentation for all of my mods is coming soon.
+
 ## Build
 
 This is a BepInEx 6 IL2CPP plugin. It compiles against BepInEx and the game's IL2CPP interop assemblies, so a game install with BepInEx set up and started once is required. Those assemblies come from the game and are not part of this repo. The .NET 8 SDK is required.

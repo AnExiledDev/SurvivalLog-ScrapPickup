@@ -38,13 +38,13 @@ internal static class ScrapHooks
 
     public static void Use(ScrapSettings settings) => _settings = settings;
 
-    private static void Patch(Harmony harmony, string what, Func<System.Reflection.MethodInfo?> find, string prefix, string? postfix)
+    private static void Patch(Harmony harmony, string what, Func<System.Reflection.MethodInfo?> find, string prefix, string? finalizer)
     {
         try
         {
             var original = find() ?? throw new MissingMethodException(what);
 
-            harmony.Patch(original, prefix: new HarmonyMethod(typeof(ScrapHooks), prefix), postfix: postfix == null ? null : new HarmonyMethod(typeof(ScrapHooks), postfix));
+            harmony.Patch(original, prefix: new HarmonyMethod(typeof(ScrapHooks), prefix), finalizer: finalizer == null ? null : new HarmonyMethod(typeof(ScrapHooks), finalizer));
             _log?.LogInfo($"hooked {what}");
         }
         catch (Exception ex)
@@ -55,7 +55,7 @@ internal static class ScrapHooks
 
     private static void OpenDemolish(EffectBtArgs __0) => Open(__0, Kind.Demolish);
 
-    /// <summary>The same node opens item packages for other actions; only an action that removes the furniture counts.</summary>
+    /// <summary>The same node opens item packages for other actions; only a scrap action counts.</summary>
     private static void OpenScrap(EffectBtArgs __0) => Open(__0, Kind.Scrap);
 
     private static void Open(EffectBtArgs args, Kind kind)
@@ -72,7 +72,7 @@ internal static class ScrapHooks
 
             var parties = EffectBtArgsExtension.GetAttackerAndTarget(args);
 
-            if (kind == Kind.Scrap && !RemovesFurniture(parties.Item4)) return;
+            if (kind == Kind.Scrap && !IsScrapAction(parties.Item4)) return;
 
             var scrapper = parties.Item1;
             var scene = new ScrapScene(scrapper != null && scrapper.InstanceId == role.InstanceId, VehicleConfig.IsInExploreInstance(), VehicleConfig.HasVehicle());
@@ -85,7 +85,7 @@ internal static class ScrapHooks
                 return;
             }
 
-            // A scrap that throws inside the game skips the postfix; the frame stamp keeps its window from catching a later item.
+            // CloseScrap runs as a finalizer, so even a scrap that throws inside the game closes its window.
             _open = new Scrap(kind, items, role.InstanceId, order, Time.frameCount, new ScrapTally());
         }
         catch (Exception ex)
@@ -95,14 +95,11 @@ internal static class ScrapHooks
         }
     }
 
-    private static bool RemovesFurniture(Config_Action? action)
-    {
-        if (action == null) return false;
-
-        var effect = GameSingleton.Existing<ConfigManager>()?.Get_Config_Effect(action.EffectConfigID);
-
-        return effect != null && effect.EDisableFurniture;
-    }
+    /// <summary>
+    /// The scrap actions (回收 and 努力拆除) run effects 127-131. Other effects that also remove furniture, such as taking
+    /// a loaf of bread (拿走, 9083), are not scrap and keep the game's own handling.
+    /// </summary>
+    private static bool IsScrapAction(Config_Action? action) => action != null && action.EffectConfigID is >= 127 and <= 131;
 
     private static void CloseScrap()
     {
@@ -146,12 +143,12 @@ internal static class ScrapHooks
         }
     }
 
-    /// <summary>The same start time, freshness and use count the game's ground drop gives the item.</summary>
+    /// <summary>The start time and freshness the game's ground drop gives the item; a use count of 0 gives it the full uses from its config.</summary>
     private static bool TryAdd(Scrap scrap, Destination destination, int itemConfigId, int count, int startTime, int timeLeft)
     {
         var ownerId = destination == Destination.Trunk ? VehicleConfig.TrunkOwnerId : scrap.RoleId;
 
-        return scrap.Items.TryAddItemToBag(ownerId, itemConfigId, count, startTime, timeLeft, 1, 1f, null, 0, null, null, 0, 0, false, false, false, false, 0);
+        return scrap.Items.TryAddItemToBag(ownerId, itemConfigId, count, startTime, timeLeft, 0, 1f, null, 0, null, null, 0, 0, false, false, false, false, 0);
     }
 
     /// <summary>
