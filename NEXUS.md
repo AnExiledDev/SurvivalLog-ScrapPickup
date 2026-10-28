@@ -2,6 +2,8 @@ Name: Scrap Pickup
 Summary: Items from furniture you scrap or demolish go into your trunk or shopping cart while exploring, then your backpack, instead of falling on the ground. At home they go straight to your backpack. Items drop on the floor only when nothing has room, so you stop chasing glass, metal and wood across the room. Your carry weight still counts.
 
 Description (BBCode):
+[center][img]https://sldb.core-directive.com/media/save/1-save-safe.png[/img][/center]
+
 Demolishing furniture drops its materials on the floor, and scrapping it with a full backpack does the same. Scrap Pickup puts them away for you.
 
 [size=5]Main features[/size]
