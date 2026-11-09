@@ -12,10 +12,10 @@ namespace ScrapPickup.Adapters;
 /// <summary>
 /// Furniture leaves items two ways. Demolish runs AE_DropFurnitureRemoveGet, which drops each item of the furniture's
 /// RemoveGet list on the ground with DropItemManager.DropItemAtPosition; while that runs, each drop first tries the trunk
-/// and the bag through the game's own ItemManager.TryAddItemToBag, which checks room and carry weight. Scrap runs
+/// and the bag through the game's ItemManager.TryAddItemToBag, which checks room and carry weight. Scrap runs
 /// AE_OpenItemPackageByConfig, which hands each package to ItemManager.TryAddPackageItems; that already tries a given
 /// owner, then the bag, then the ground, so while exploring the scrap gives it the trunk as that owner. Every hook fails
-/// soft, back to the game's own behavior.
+/// soft, back to the game's behavior.
 /// </summary>
 internal static class ScrapHooks
 {
@@ -97,7 +97,7 @@ internal static class ScrapHooks
 
     /// <summary>
     /// The scrap actions (回收 and 努力拆除) run effects 127-131. Other effects that also remove furniture, such as taking
-    /// a loaf of bread (拿走, 9083), are not scrap and keep the game's own handling.
+    /// a loaf of bread (拿走, 9083), are not scrap and keep the game's handling.
     /// </summary>
     private static bool IsScrapAction(Config_Action? action) => action != null && action.EffectConfigID is >= 127 and <= 131;
 
