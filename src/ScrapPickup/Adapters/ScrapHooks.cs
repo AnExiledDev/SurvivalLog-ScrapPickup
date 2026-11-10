@@ -22,7 +22,7 @@ internal static class ScrapHooks
     private static readonly HashSet<string> ReportedFailures = new();
 
     private static ManualLogSource? _log;
-    private static ScrapSettings _settings = new(UseTrunk: true);
+    private static ScrapSettings _settings = new(IsOn: OnSwitch.Default, UseTrunk: true);
     private static Scrap? _open;
     private static bool _isPlacing;
 
@@ -53,6 +53,8 @@ internal static class ScrapHooks
         try
         {
             _open = null;
+
+            if (!_settings.IsOn) return;
 
             var world = GameSingleton.Existing<BattleLogicWorld>();
             var role = world?._AgentManager?.GetLeadingRole();

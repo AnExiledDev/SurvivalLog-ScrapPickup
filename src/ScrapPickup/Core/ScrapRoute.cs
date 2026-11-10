@@ -16,8 +16,9 @@ public enum Destination
 /// <param name="HasVehicle">The player owns a trunk or shopping cart.</param>
 public sealed record ScrapScene(bool IsByPlayer, bool IsExploring, bool HasVehicle);
 
+/// <param name="IsOn">The [Scrap] Enabled setting. Off, every item drops as in the unmodded game.</param>
 /// <param name="UseTrunk">Send scrap to the trunk or shopping cart first while exploring.</param>
-public sealed record ScrapSettings(bool UseTrunk);
+public sealed record ScrapSettings(bool IsOn, bool UseTrunk);
 
 /// <summary>
 /// The order scrapped items try their destinations in: the trunk or cart first while exploring with one, then the bag.
@@ -30,7 +31,7 @@ public static class ScrapRoute
 
     public static IReadOnlyList<Destination> Order(ScrapScene scene, ScrapSettings settings)
     {
-        if (!scene.IsByPlayer) return None;
+        if (!settings.IsOn || !scene.IsByPlayer) return None;
 
         var order = new List<Destination>(2);
 

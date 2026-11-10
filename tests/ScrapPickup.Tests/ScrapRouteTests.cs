@@ -5,7 +5,7 @@ namespace ScrapPickup.Tests;
 
 public class ScrapRouteTests
 {
-    private static readonly ScrapSettings Both = new(UseTrunk: true);
+    private static readonly ScrapSettings Both = new(IsOn: true, UseTrunk: true);
 
     [Fact]
     public void Exploring_with_a_vehicle_tries_the_trunk_before_the_bag()
@@ -44,7 +44,18 @@ public class ScrapRouteTests
     {
         var exploring = new ScrapScene(IsByPlayer: true, IsExploring: true, HasVehicle: true);
 
-        Assert.Equal(new[] { Destination.Bag }, ScrapRoute.Order(exploring, new ScrapSettings(UseTrunk: false)));
+        Assert.Equal(new[] { Destination.Bag }, ScrapRoute.Order(exploring, new ScrapSettings(IsOn: true, UseTrunk: false)));
+    }
+
+    [Fact]
+    public void Turned_off_every_item_drops_as_in_the_unmodded_game()
+    {
+        var exploring = new ScrapScene(IsByPlayer: true, IsExploring: true, HasVehicle: true);
+        var atHome = new ScrapScene(IsByPlayer: true, IsExploring: false, HasVehicle: false);
+        var off = new ScrapSettings(IsOn: false, UseTrunk: true);
+
+        Assert.Empty(ScrapRoute.Order(exploring, off));
+        Assert.Empty(ScrapRoute.Order(atHome, off));
     }
 
     [Fact]
