@@ -33,8 +33,8 @@
     <AssemblyMetadata Include="ModManager.Description" Value="Items from furniture you scrap or demolish go to your trunk or shopping cart while exploring, then your backpack, instead of the ground. At home they go to your backpack.&#10;回收或拆除家具得到的物品不再掉在地上：外出探索时先放进后备箱或购物车，再放进背包；在家时放进背包。" />
     <AssemblyMetadata Include="ModManager.Author" Value="AnExiledDev" />
     <AssemblyMetadata Include="ModManager.Category" Value="QualityOfLife" />
-    <AssemblyMetadata Include="ModManager.GameVersion" Value="1.1.19611" />
-    <AssemblyMetadata Include="ModManager.Settings" Value="Restart" />
+    <AssemblyMetadata Include="ModManager.GameVersion" Value="1.1.20719" />
+    <AssemblyMetadata Include="ModManager.Settings" Value="Live" />
     <AssemblyMetadata Include="ModManager.NexusId" Value="91" />
     <AssemblyMetadata Include="ModManager.GitHub" Value="AnExiledDev/SurvivalLog-ScrapPickup" />
     <AssemblyMetadata Include="ModManager.Changelog" Value="https://github.com/AnExiledDev/SurvivalLog-ScrapPickup/blob/main/CHANGELOG.md" />

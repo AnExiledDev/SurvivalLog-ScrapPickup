@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using BepInEx.Logging;
+using ExiledToolkit.Game;
 using GameCore.HotUpdate;
 using GameCore.HotUpdate.Battle.Logic;
-using HarmonyLib;
 using ScrapPickup.Core;
 using UnityEngine;
 
@@ -26,32 +26,22 @@ internal static class ScrapHooks
     private static Scrap? _open;
     private static bool _isPlacing;
 
-    public static void Apply(Harmony harmony, ManualLogSource log)
+    public static void Apply(PatchKit hooks, ManualLogSource log)
     {
         _log = log;
-        Patch(harmony, "the demolish action", () => AccessTools.Method(typeof(AE_DropFurnitureRemoveGet), nameof(AE_DropFurnitureRemoveGet.Run)), nameof(OpenDemolish), nameof(CloseScrap));
-        Patch(harmony, "the ground drop", () => AccessTools.Method(typeof(DropItemManager), nameof(DropItemManager.DropItemAtPosition),
-            new[] { typeof(Vector3), typeof(int), typeof(int), typeof(int), typeof(int), typeof(int) }), nameof(PlaceInstead), null);
-        Patch(harmony, "the scrap action", () => AccessTools.Method(typeof(AE_OpenItemPackageByConfig), nameof(AE_OpenItemPackageByConfig.Run)), nameof(OpenScrap), nameof(CloseScrap));
-        Patch(harmony, "the scrap package", () => AccessTools.Method(typeof(ItemManager), nameof(ItemManager.TryAddPackageItems)), nameof(PackageToTrunk), null);
+
+        hooks.Patch(typeof(ScrapHooks), typeof(AE_DropFurnitureRemoveGet), nameof(AE_DropFurnitureRemoveGet.Run),
+            prefix: nameof(OpenDemolish), finalizer: nameof(CloseScrap), done: "hooked the demolish action", consequence: "the demolish action works as in the unmodded game");
+        hooks.Patch(typeof(ScrapHooks), typeof(DropItemManager), nameof(DropItemManager.DropItemAtPosition),
+            new[] { typeof(Vector3), typeof(int), typeof(int), typeof(int), typeof(int), typeof(int) },
+            prefix: nameof(PlaceInstead), done: "hooked the ground drop", consequence: "the ground drop works as in the unmodded game");
+        hooks.Patch(typeof(ScrapHooks), typeof(AE_OpenItemPackageByConfig), nameof(AE_OpenItemPackageByConfig.Run),
+            prefix: nameof(OpenScrap), finalizer: nameof(CloseScrap), done: "hooked the scrap action", consequence: "the scrap action works as in the unmodded game");
+        hooks.Patch(typeof(ScrapHooks), typeof(ItemManager), nameof(ItemManager.TryAddPackageItems),
+            prefix: nameof(PackageToTrunk), done: "hooked the scrap package", consequence: "the scrap package works as in the unmodded game");
     }
 
     public static void Use(ScrapSettings settings) => _settings = settings;
-
-    private static void Patch(Harmony harmony, string what, Func<System.Reflection.MethodInfo?> find, string prefix, string? finalizer)
-    {
-        try
-        {
-            var original = find() ?? throw new MissingMethodException(what);
-
-            harmony.Patch(original, prefix: new HarmonyMethod(typeof(ScrapHooks), prefix), finalizer: finalizer == null ? null : new HarmonyMethod(typeof(ScrapHooks), finalizer));
-            _log?.LogInfo($"hooked {what}");
-        }
-        catch (Exception ex)
-        {
-            _log?.LogError($"could not hook {what}, it works as in the unmodded game: {ex.Message}");
-        }
-    }
 
     private static void OpenDemolish(EffectBtArgs __0) => Open(__0, Kind.Demolish);
 
