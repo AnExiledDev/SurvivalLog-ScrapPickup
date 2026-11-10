@@ -8,6 +8,15 @@ public class ScrapRouteTests
     private static readonly ScrapSettings Both = new(IsOn: true, UseTrunk: true);
 
     [Fact]
+    public void A_new_install_is_on_and_tries_the_trunk_first()
+    {
+        var exploring = new ScrapScene(IsByPlayer: true, IsExploring: true, HasVehicle: true);
+
+        Assert.Equal(new ScrapSettings(IsOn: true, UseTrunk: true), ScrapSettings.Default);
+        Assert.Equal(new[] { Destination.Trunk, Destination.Bag }, ScrapRoute.Order(exploring, ScrapSettings.Default));
+    }
+
+    [Fact]
     public void Exploring_with_a_vehicle_tries_the_trunk_before_the_bag()
     {
         var order = ScrapRoute.Order(new ScrapScene(IsByPlayer: true, IsExploring: true, HasVehicle: true), Both);

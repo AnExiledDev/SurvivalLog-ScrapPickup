@@ -2,8 +2,6 @@
 
 Items from furniture you scrap or demolish go into your trunk or backpack instead of falling on the ground.
 
-**Scrap Pickup starts off.** Installing it changes nothing until you turn on `Enabled` under **Scrap** in its settings (the Mod Manager's Mods screen, or the config file). If you had it before 0.1.2, it stays on.
-
 In Survival Log, demolishing furniture drops its materials on the floor, and scrapping it while your backpack is full does the same. Scrap Pickup puts them away for you.
 
 ## Features
@@ -44,7 +42,7 @@ Settings live in `BepInEx\config\com.dev.survivallog.scrappickup.cfg`, created t
 
 Built against BepInEx `6.0.0-be.788`.
 
-Check `BepInEx\LogOutput.log` for `===== Scrap Pickup 0.1.2 started`, followed by lines starting with `hooked`. A line starting with `could not hook` means part of the mod does not work on this game version, and that part works as in the unmodded game.
+Check `BepInEx\LogOutput.log` for `===== Scrap Pickup 0.1.3 started`, followed by lines starting with `hooked`. A line starting with `could not hook` means part of the mod does not work on this game version, and that part works as in the unmodded game.
 
 ## Known issues
 

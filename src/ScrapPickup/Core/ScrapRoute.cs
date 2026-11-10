@@ -18,7 +18,11 @@ public sealed record ScrapScene(bool IsByPlayer, bool IsExploring, bool HasVehic
 
 /// <param name="IsOn">The [Scrap] Enabled setting. Off, every item drops as in the unmodded game.</param>
 /// <param name="UseTrunk">Send scrap to the trunk or shopping cart first while exploring.</param>
-public sealed record ScrapSettings(bool IsOn, bool UseTrunk);
+public sealed record ScrapSettings(bool IsOn, bool UseTrunk)
+{
+    /// <summary>A fresh install: the mod is on and tries the trunk first.</summary>
+    public static readonly ScrapSettings Default = new(IsOn: true, UseTrunk: true);
+}
 
 /// <summary>
 /// The order scrapped items try their destinations in: the trunk or cart first while exploring with one, then the bag.

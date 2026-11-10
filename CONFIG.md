@@ -6,5 +6,5 @@ Settings live in `BepInEx\config\com.dev.survivallog.scrappickup.cfg`, created t
 
 | Setting | Default | What it does |
 | --- | --- | --- |
-| `Enabled` | `false` | Turns Scrap Pickup on. While it is `false`, items from furniture you scrap or demolish drop the way they do without the mod. A new install starts with it off. If you had the mod before 0.1.2, the update turns it on for you. |
+| `Enabled` | `true` | Turns Scrap Pickup on and off. While it is `false`, items from furniture you scrap or demolish drop the way they do without the mod. |
 | `ToTrunk` | `true` | While exploring, items from furniture you scrap or demolish go to your trunk or shopping cart first, then your backpack. Set it to `false` to skip the trunk; items then go to your backpack. At home the trunk is never used. Items drop on the ground only when nothing has room. |
