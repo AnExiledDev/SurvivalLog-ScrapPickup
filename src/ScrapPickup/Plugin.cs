@@ -13,16 +13,16 @@ namespace ScrapPickup;
 public sealed class Plugin : BasePlugin
 {
     private const string Guid = "com.dev.survivallog.scrappickup";
-    private const string Version = "0.1.3";
+    private const string Version = "0.1.4";
     private const string ToolkitGuid = "com.dev.survivallog.exiledtoolkit";
 
     public override void Load()
     {
         var isOn = Config.Bind("Scrap", "Enabled", ScrapSettings.Default.IsOn,
-            "Turns Scrap Pickup on. When false, items from furniture you scrap or demolish drop the same way they do without the mod.\n" +
-            "设为 true 时启用 Scrap Pickup。设为 false 时，回收或拆除家具得到的物品和没装本模组时一样掉落。");
+            "Turns Scrap Pickup on and off. When false, items from furniture you scrap or demolish drop like they do without the mod.\n" +
+            "设为 true 时启用 Scrap Pickup。设为 false 时，回收或拆除家具得到的物品和没装本模组时一样掉在地上。");
         var useTrunk = Config.Bind("Scrap", "ToTrunk", ScrapSettings.Default.UseTrunk,
-            "When true, items from furniture you scrap or demolish while exploring go to your trunk or shopping cart first, then your backpack. When false, or at home, they go to your backpack. They drop on the ground only when nothing has room.\n" +
+            "When true, items from furniture you scrap or demolish while exploring go to your trunk or shopping cart first, then your backpack. When false, or when you are at home, items go to your backpack. Items drop on the ground only when nothing has room.\n" +
             "设为 true 时，外出探索时回收或拆除家具得到的物品会先放进后备箱或购物车，再放进背包。设为 false 或在家时，物品会放进背包。只有都放不下时，物品才会掉在地上。");
 
         Log.LogInfo($"===== Scrap Pickup {Version} started");

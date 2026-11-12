@@ -6,7 +6,7 @@ In Survival Log, demolishing furniture drops its materials on the floor, and scr
 
 ## Features
 
-- **Trunk first while exploring**: with a shopping cart or car, materials go to its trunk first, then your backpack.
+- **Trunk first while exploring**: with a shopping cart or car, materials go to its trunk first, then your backpack. The `ToTrunk` setting turns this off.
 - **Backpack at home**: the trunk is not with you at home, so materials go to your backpack.
 - **Ground only as a last resort**: items drop on the ground only when the trunk and the backpack have no room.
 - **Both ways of removing furniture**: works for Scrap and for Demolish.
@@ -17,9 +17,9 @@ Scrap Pickup adds nothing to your save and does not edit game files. You can rem
 
 ## Requirements
 
-- Survival Log 1.1.20719. Built for this version; a game update can break it until the mod is updated.
+- Survival Log 1.1.20719. A game update can break the mod until it gets an update too.
 - The [BepInEx Pack for Survival Log](https://www.nexusmods.com/survivallog/mods/12), the BepInEx 6 (IL2CPP) build for the game.
-- [Exiled's Toolkit](https://github.com/AnExiledDev/SurvivalLog-ExiledToolkit) 0.19.0 or newer. Scrap Pickup does not load without it. It applies settings changed on the Mod Manager's Mods screen without restarting the game.
+- [Exiled's Toolkit](https://github.com/AnExiledDev/SurvivalLog-ExiledToolkit) 0.19.0 or newer. Scrap Pickup does not load without it. The Toolkit is what makes a setting you change on the Mod Manager's Mods screen apply without restarting the game.
 - Optional: [Mod Manager](https://www.nexusmods.com/survivallog/mods/73). With it, you can change every setting in game on its Mods screen and see what each one does, without opening the config file.
 
 ## Install
@@ -32,17 +32,17 @@ Scrap Pickup adds nothing to your save and does not edit game files. You can rem
 
 ## Uninstall
 
-Delete `ScrapPickup.dll` from the `BepInEx\plugins` folder. For a clean slate, also delete `BepInEx\config\com.dev.survivallog.scrappickup.cfg`.
+Delete `ScrapPickup.dll` from the `BepInEx\plugins` folder. To remove your settings too, also delete `BepInEx\config\com.dev.survivallog.scrappickup.cfg`.
 
 ## Configuration
 
-Settings live in `BepInEx\config\com.dev.survivallog.scrappickup.cfg`, created the first time the game starts with the mod. Change them in game on the Mod Manager's Mods screen, where they take effect at once, or edit the file while the game is closed. See [CONFIG.md](CONFIG.md) for every setting.
+Settings are in `BepInEx\config\com.dev.survivallog.scrappickup.cfg`, which is created the first time the game starts with the mod. You can change them in game on the Mod Manager's Mods screen, where changes apply right away, or edit the file while the game is closed. See [CONFIG.md](CONFIG.md) for every setting.
 
 ## Troubleshooting
 
 Built against BepInEx `6.0.0-be.788`.
 
-Check `BepInEx\LogOutput.log` for `===== Scrap Pickup 0.1.3 started`, followed by lines starting with `hooked`. A line starting with `could not hook` means part of the mod does not work on this game version, and that part works as in the unmodded game.
+Check `BepInEx\LogOutput.log` for `===== Scrap Pickup 0.1.4 started`, followed by lines starting with `hooked`. A line starting with `could not hook` means part of the mod does not work on this game version. That part then works the same as it does without the mod.
 
 ## Known issues
 
@@ -50,9 +50,9 @@ Check `BepInEx\LogOutput.log` for `===== Scrap Pickup 0.1.3 started`, followed b
 
 ## Feedback and bug reports
 
-Found a bug, have an idea, or something feels off? Come say so on the Core Directive Discord: https://discord.gg/trTsyxUFqg . You can also post in the Posts tab of the mod's Nexus Mods page. When reporting a bug, attach `BepInEx\LogOutput.log`.
+Found a bug or have an idea? Come say so on the Core Directive Discord: https://discord.gg/trTsyxUFqg . You can also post in the Posts tab of the mod's Nexus Mods page. When reporting a bug, attach `BepInEx\LogOutput.log`.
 
-To reach me directly, message `exiled.dev` on Discord; you can find me in the [official Survival Log Discord](https://discord.gg/MZGg4gQAUe). I'm also on X as [@AnExiledDev](https://x.com/AnExiledDev).
+To reach me directly, message `exiled.dev` on Discord. You can find me in the [official Survival Log Discord](https://discord.gg/MZGg4gQAUe). I'm also on X as [@AnExiledDev](https://x.com/AnExiledDev).
 
 A Survival Log wiki with detailed documentation for all of my mods is coming soon.
 
@@ -66,7 +66,7 @@ dotnet build src/ScrapPickup -c Release -p:GameDir="C:\path\to\Survival Log" -p:
 
 `GameDir` is the game folder. The default in the project file is a local path you will almost certainly need to override. The output DLL is at `src\ScrapPickup\bin\Release\ScrapPickup.dll`.
 
-The unit tests cover the pure routing rules and need nothing from the game:
+The unit tests check where items go and need nothing from the game:
 
 ```
 dotnet test tests/ScrapPickup.Tests

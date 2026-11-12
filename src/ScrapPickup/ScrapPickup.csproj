@@ -30,7 +30,7 @@
   <!-- What the Mod Manager's Mods screen shows about this mod. -->
   <ItemGroup>
     <AssemblyMetadata Include="ModManager.Name" Value="Scrap Pickup&#10;回收拾取" />
-    <AssemblyMetadata Include="ModManager.Description" Value="Items from furniture you scrap or demolish go to your trunk or shopping cart while exploring, then your backpack, instead of the ground. At home they go to your backpack.&#10;回收或拆除家具得到的物品不再掉在地上：外出探索时先放进后备箱或购物车，再放进背包；在家时放进背包。" />
+    <AssemblyMetadata Include="ModManager.Description" Value="Items from furniture you scrap or demolish go into your trunk or backpack instead of falling on the ground. While exploring, items go to your trunk or shopping cart first. At home, items go to your backpack.&#10;回收或拆除家具得到的物品会放进后备箱或背包，不再掉在地上。外出探索时先放进后备箱或购物车，在家时放进背包。" />
     <AssemblyMetadata Include="ModManager.Author" Value="AnExiledDev" />
     <AssemblyMetadata Include="ModManager.Category" Value="QualityOfLife" />
     <AssemblyMetadata Include="ModManager.GameVersion" Value="1.1.20719" />

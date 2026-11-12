@@ -1,5 +1,5 @@
 Name: Scrap Pickup
-Summary: Items from furniture you scrap or demolish go into your trunk or shopping cart while exploring, then your backpack, instead of falling on the ground. At home they go straight to your backpack. Items drop on the floor only when nothing has room, so you stop chasing glass, metal and wood across the room. Your carry weight still counts.
+Summary: Items from furniture you scrap or demolish go into your trunk or backpack instead of falling on the ground. While exploring, your trunk or shopping cart gets them first. At home they go straight to your backpack. Items drop on the floor only when nothing has room, so you stop chasing glass, metal and wood across the room. Your carry weight still counts.
 
 Description (BBCode):
 [center][img]https://sldb.core-directive.com/media/save/1-save-safe.png[/img][/center]
@@ -8,7 +8,7 @@ Demolishing furniture drops its materials on the floor, and scrapping it with a 
 
 [size=5]Main features[/size]
 [list]
-[*][b]Trunk first while exploring[/b]: with a shopping cart or car, materials go to its trunk first, then your backpack.[/*]
+[*][b]Trunk first while exploring[/b]: with a shopping cart or car, materials go to its trunk first, then your backpack. The [font=Courier New]ToTrunk[/font] setting turns this off.[/*]
 [*][b]Backpack at home[/b]: the trunk is not with you at home, so materials go to your backpack.[/*]
 [*][b]Ground only as a last resort[/b]: items drop on the ground only when the trunk and the backpack have no room.[/*]
 [*][b]Both ways of removing furniture[/b]: works for Scrap and for Demolish.[/*]
@@ -29,7 +29,7 @@ Items stored inside a piece of furniture (a cabinet's contents, for example) sti
 [list]
 [*]Survival Log 1.1.20719. A game update can break it until the mod is updated.[/*]
 [*][url=https://www.nexusmods.com/survivallog/mods/12]BepInEx for Survival Log[/url]. Install it first.[/*]
-[*][url=https://www.nexusmods.com/survivallog/mods/61]Exiled's Toolkit[/url] 0.19.0 or newer. Scrap Pickup does not load without it. It applies settings changed on the Mod Manager's Mods screen without restarting the game.[/*]
+[*][url=https://www.nexusmods.com/survivallog/mods/61]Exiled's Toolkit[/url] 0.19.0 or newer. Scrap Pickup does not load without it. The Toolkit is what makes a setting you change on the Mod Manager's Mods screen apply without restarting the game.[/*]
 [*]Optional: [url=https://www.nexusmods.com/survivallog/mods/73]Mod Manager[/url]. With it, you can change every setting in game on its Mods screen and see what each one does, without opening the config file.[/*]
 [/list]
 
@@ -46,11 +46,11 @@ Items stored inside a piece of furniture (a cabinet's contents, for example) sti
 Delete [font=Courier New]ScrapPickup.dll[/font] from the [font=Courier New]BepInEx\plugins[/font] folder.
 
 [size=5]Configuration[/size]
-To change settings, edit [font=Courier New]BepInEx\config\com.dev.survivallog.scrappickup.cfg[/font] while the game is closed, or do it in game on the Mod Manager's Mods screen, where changes take effect at once (see [url=https://github.com/AnExiledDev/SurvivalLog-ScrapPickup/blob/main/CONFIG.md]CONFIG.md[/url] for every setting). [font=Courier New]Enabled[/font] turns the mod off. [font=Courier New]ToTrunk[/font] turns the trunk off; items then go to your backpack.
+To change settings, edit [font=Courier New]BepInEx\config\com.dev.survivallog.scrappickup.cfg[/font] while the game is closed, or do it in game on the Mod Manager's Mods screen, where changes apply right away (see [url=https://github.com/AnExiledDev/SurvivalLog-ScrapPickup/blob/main/CONFIG.md]CONFIG.md[/url] for every setting). [font=Courier New]Enabled[/font] turns the mod on and off. [font=Courier New]ToTrunk[/font] turns the trunk off, so items go straight to your backpack.
 
 [size=5]Feedback[/size]
 Found a bug or have an idea? Come say hi on the [url=https://discord.gg/trTsyxUFqg]Core Directive Discord[/url], or post in this page's Posts tab. For bugs, please include [font=Courier New]BepInEx\LogOutput.log[/font].
-To reach me directly, message [b]exiled.dev[/b] on Discord; you can find me in the [url=https://discord.gg/MZGg4gQAUe]official Survival Log Discord[/url]. I'm also on X as [url=https://x.com/AnExiledDev]@AnExiledDev[/url].
+To reach me directly, message [b]exiled.dev[/b] on Discord. You can find me in the [url=https://discord.gg/MZGg4gQAUe]official Survival Log Discord[/url]. I'm also on X as [url=https://x.com/AnExiledDev]@AnExiledDev[/url].
 
 [size=5]Source and license[/size]
 Open source under MIT: [url=https://github.com/AnExiledDev/SurvivalLog-ScrapPickup]github.com/AnExiledDev/SurvivalLog-ScrapPickup[/url]
@@ -62,7 +62,7 @@ Open source under MIT: [url=https://github.com/AnExiledDev/SurvivalLog-ScrapPick
 
 [size=5]主要功能[/size]
 [list]
-[*][b]外出时先放后备箱[/b]：有购物车或汽车时，材料先放进它的后备箱，再放进背包。[/*]
+[*][b]外出时先放后备箱[/b]：有购物车或汽车时，材料先放进它的后备箱，再放进背包。可以用 [font=Courier New]ToTrunk[/font] 设置关闭。[/*]
 [*][b]在家时放背包[/b]：在家时后备箱不在身边，所以材料放进背包。[/*]
 [*][b]实在放不下才掉地上[/b]：只有后备箱和背包都没有空间时，物品才会掉在地上。[/*]
 [*][b]两种方式都支持[/b]：「回收」和「拆除」家具都有效。[/*]
@@ -99,7 +99,7 @@ Scrap Pickup 不会往存档里添加任何内容，也不会修改游戏文件�
 从 [font=Courier New]BepInEx\plugins[/font] 文件夹中删除 [font=Courier New]ScrapPickup.dll[/font]。
 
 [size=5]配置[/size]
-可以在游戏内 Mod Manager 的「模组」界面修改，改动立即生效；也可以在游戏关闭时编辑 [font=Courier New]BepInEx\config\com.dev.survivallog.scrappickup.cfg[/font]。配置文件中每项设置都有中文说明，完整说明见 [url=https://github.com/AnExiledDev/SurvivalLog-ScrapPickup/blob/main/CONFIG.md]CONFIG.md[/url]（英文）。[font=Courier New]Enabled[/font] 可以关闭本模组。[font=Courier New]ToTrunk[/font] 可以关闭后备箱，物品改为放进背包。
+可以在游戏内 Mod Manager 的「模组」界面修改，改动立即生效；也可以在游戏关闭时编辑 [font=Courier New]BepInEx\config\com.dev.survivallog.scrappickup.cfg[/font]。配置文件中每项设置都有中文说明，完整说明见 [url=https://github.com/AnExiledDev/SurvivalLog-ScrapPickup/blob/main/CONFIG.md]CONFIG.md[/url]（英文）。[font=Courier New]Enabled[/font] 可以开关本模组。[font=Courier New]ToTrunk[/font] 可以关闭后备箱，物品改为放进背包。
 
 [size=5]反馈[/size]
 发现 bug 或有好点子？欢迎来 [url=https://discord.gg/trTsyxUFqg]Core Directive Discord[/url] 打个招呼，或在本页的「Posts」标签里发帖。报告 bug 时，请附上 [font=Courier New]BepInEx\LogOutput.log[/font]。
