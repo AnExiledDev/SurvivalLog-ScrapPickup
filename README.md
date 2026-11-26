@@ -17,7 +17,7 @@ Scrap Pickup adds nothing to your save and does not edit game files. You can rem
 
 ## Requirements
 
-- Survival Log 1.1.20719. A game update can break the mod until it gets an update too.
+- Survival Log 1.1.21671. A game update can break the mod until it gets an update too.
 - The [BepInEx Pack for Survival Log](https://www.nexusmods.com/survivallog/mods/12), the BepInEx 6 (IL2CPP) build for the game.
 - [Exiled's Toolkit](https://github.com/AnExiledDev/SurvivalLog-ExiledToolkit) 0.19.0 or newer. Scrap Pickup does not load without it. The Toolkit is what makes a setting you change on the Mod Manager's Mods screen apply without restarting the game.
 - Optional: [Mod Manager](https://www.nexusmods.com/survivallog/mods/73). With it, you can change every setting in game on its Mods screen and see what each one does, without opening the config file.
