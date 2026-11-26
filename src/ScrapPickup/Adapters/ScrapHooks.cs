@@ -78,7 +78,7 @@ internal static class ScrapHooks
             }
 
             // CloseScrap runs as a finalizer, so even a scrap that throws inside the game closes its window.
-            _open = new Scrap(kind, items, role.InstanceId, order, Time.frameCount, new ScrapTally());
+            _open = new Scrap(kind, items, role.InstanceId, order, UnityFrame.Count(), new ScrapTally());
         }
         catch (Exception ex)
         {
@@ -107,7 +107,7 @@ internal static class ScrapHooks
     {
         var scrap = _open;
 
-        if (scrap == null || scrap.Kind != Kind.Demolish || _isPlacing || scrap.Frame != Time.frameCount) return true;
+        if (scrap == null || scrap.Kind != Kind.Demolish || _isPlacing || scrap.Frame != UnityFrame.Count()) return true;
 
         try
         {
@@ -151,7 +151,7 @@ internal static class ScrapHooks
     {
         var scrap = _open;
 
-        if (scrap == null || scrap.Kind != Kind.Scrap || _isPlacing || scrap.Frame != Time.frameCount) return true;
+        if (scrap == null || scrap.Kind != Kind.Scrap || _isPlacing || scrap.Frame != UnityFrame.Count()) return true;
 
         try
         {

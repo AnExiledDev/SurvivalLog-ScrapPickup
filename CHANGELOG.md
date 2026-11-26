@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.5
+
+- Small speed up: the mod reads the frame in a cheaper way.
+- Made for Survival Log 1.1.21671.
+
 ## 0.1.4
 
 - Clearer wording in the settings and on the Mods screen.
