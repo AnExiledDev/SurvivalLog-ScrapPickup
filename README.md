@@ -54,17 +54,17 @@ Found a bug or have an idea? Come say hi in the [unofficial modding Discord for 
 
 To reach me directly, message `exiled.dev` on Discord. You can find me in the [unofficial modding Discord](https://discord.gg/pDrQtqbZgb) and the [official Survival Log Discord](https://discord.gg/MZGg4gQAUe). I'm also on X as [@AnExiledDev](https://x.com/AnExiledDev).
 
-A Survival Log wiki with detailed documentation for all of my mods is coming soon.
+Check out my [Survival Log wiki](https://sldb.core-directive.com/en/) for items, crafting, maps and more.
 
 ## Build
 
-This is a BepInEx 6 IL2CPP plugin. It compiles against BepInEx and the game's IL2CPP interop assemblies, so a game install with BepInEx set up and started once is required. Those assemblies come from the game and are not part of this repo. The .NET 8 SDK is required.
+This is a BepInEx 6 IL2CPP plugin. It compiles against BepInEx, the game's IL2CPP interop assemblies and Exiled's Toolkit, so a game install with BepInEx set up and started once is required. Those assemblies are not part of this repo. The .NET 8 SDK is required.
 
 ```
 dotnet build src/ScrapPickup -c Release -p:GameDir="C:\path\to\Survival Log" -p:ToolkitDll="C:\path\to\ExiledToolkit.dll"
 ```
 
-`GameDir` is the game folder. The default in the project file is a local path you will almost certainly need to override. The output DLL is at `src\ScrapPickup\bin\Release\ScrapPickup.dll`.
+`GameDir` is the game folder and `ToolkitDll` is a built `ExiledToolkit.dll` (0.19.0 or newer). The defaults in the project file are local paths you will almost certainly need to override. The output DLL is at `src\ScrapPickup\bin\Release\ScrapPickup.dll`.
 
 The unit tests check where items go and need nothing from the game:
 
